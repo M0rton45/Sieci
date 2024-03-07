@@ -1,0 +1,30 @@
+.baner{
+    background-color: green;
+    color: white; 
+}
+.bl, .stopka{
+    background-color: rgb(145, 244, 203);
+}
+.bl, .bp{
+    height: 500px;
+    float: left;
+}
+.stopka{
+    text-align: center;
+    clear: both;
+}
+h1{
+    margin: 0px;
+}
+.bl{
+    width: 25%;
+}
+.bp{
+    display: flex;
+    width: 75%;
+    justify-content: center;
+    align-items: center;
+}
+table{
+    text-align: center;
+}
