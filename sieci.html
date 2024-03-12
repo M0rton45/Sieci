@@ -1,40 +1,130 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sieci</title>
     <link rel="stylesheet" href="sieci.css">
 </head>
-<body>
-    
-<div class="baner">
-    <h1>Siecie komputerowe</h1>
-</div>
-<div class="b">
-<div class="bl">
-    <h2>Aktualizacja i zamówienia materiałów</h2>
-    <p>Do wewnętrznego użytku firmy</p>
-</div>
-<div class="bp">
-    <table>
-        <tr><td>Produkt</td><td>Jednostka</td><td>Dostępna ilość</td><td>Aktualizacja</td><td>Zamówienie</td></tr>
-        <tr><td>Skrętka U/UTP drut</td><td>metr</td><td><label id="ilosc"></label></td><td>4</td><td>5</td></tr>
-        <tr><td>Skrętka U/UTP linka</td><td>metr</td><td>3</td><td>4</td><td>5</td></tr>
-        <tr><td>Wtyki 8P8C</td><td>sztuki</td><td>3</td><td>4</td><td>5</td></tr>
-        <tr><td>Moduły Keystone</td><td>sztuki</td><td>3</td><td>4</td><td>5</td></tr>
-    </table>
-</div>
-</div>
-<div class="stopka">
-    <a href="sieci.html">Nasza strona internetowa</a>
-    <p>Stronę przygotował: Mateusz Kurdyk</p>
-</div>
 
+<body>
+
+    <div class="baner">
+        <h1>Siecie komputerowe</h1>
+    </div>
+    <div class="b">
+        <div class="bl">
+            <h2>Aktualizacja i zamówienia materiałów</h2>
+            <h4>Do wewnętrznego użytku firmy</h4>
+        </div>
+        <div class="bp">
+            <table>
+                <tr>
+                    <th>Produkt</th>
+                    <th>Jednostka</th>
+                    <th>Dostępna ilość</th>
+                    <th>Aktualizacja</th>
+                    <th>Zamówienie</th>
+                </tr>
+                <tr>
+                    <td><span id="nazwa">Skrętka</span></td>
+                    <td><span id="jednostka">Metry</span></td>
+                    <td>0</td>
+                    <td>
+                        <input type="submit" id="przeslij" value="Aktualizuj">
+                    </td>
+                    <td>
+                        <input type="submit" id="zamow" value="Zamów" onclick="zamow()">
+                    </td>
+                </tr>
+                <tr>
+                    <td><span id="nazwa">skretka</span></td>
+                    <td><span id="jednostka">metr</span></td>
+                    <td>0</td>
+                    <td>
+                        <input type="submit" id="przeslij" value="Aktualizuj">
+                    </td>
+                    <td>
+                        <input type="submit" id="zamow" value="Zamów" onclick="zamow()">
+                    </td>
+                </tr>
+                <tr>
+                    <td><span id="nazwa">Wtyki 8P8C</span></td>
+                    <td><span id="jednostka">sztuki</span></td>
+                    <td>0</td>
+                    <td><input type="submit" id="przeslij" value="Aktualizuj"></td>
+                    <td>5</td>
+                </tr>
+                <tr>
+                    <td><span id="nazwa">Moduły Keystone</span></td>
+                    <td><span id="jednostka">sztuki</span></td>
+                    <td>5</td>
+                    <td><input type="submit" id="przeslij" value="Aktualizuj"></td>
+                    <td>5</td>
+                </tr>
+            </table>
+        </div>
+    </div>
+    <div class="stopka">
+        <a href="sieci.html">Nasza strona internetowa</a>
+        <p>Stronę przygotował: Mateusz Kurdyk</p>
+    </div>
+
+    <script>
+        let licznik = 0;
+        function zamow() {
+            licznik++;
+            alert("Zamówiono twój numer to: " + licznik);
+        }
+        var tab = document.querySelectorAll(".bp > table > tbody > tr");
+        for (var i = 0; i < tab.length; i++) {
+            var ilosc = tab[i].children[2].textContent;
+            if (ilosc == 0) tab[i].children[2].style.backgroundColor = "red";
+            else if (ilosc <= 5) tab[i].children[2].style.backgroundColor = "orange";
+            var clicked = false;
+            let Produkt = tab[i].children[0].textContent;
+            let Jed = tab[i].children[1].textContent;
+
+
+            var Aktu = tab[i].children[3].addEventListener("click", function () {
+
+                clicked = true;
+                console.log(clicked);
+
+                if (clicked == true) {
+                    console.log(x);
+                    let prod = prompt("Podaj nazwe ", Produkt);
+                    let jedno = prompt("Podaj w jakich jednostkach", Jed);
+                    // var nazwa = document.querySelectorAll("[id='nazwa']");
+
+                    if (prod != null) {
+                        for (var x = 0; x < tab.length - 1; x++) {
+                            nazwa[x] = document.getElementById("nazwa");
+                            // console.log(nazwa[x].textContent);
+                            // console.log(Produkt);
+                            if (Produkt == nazwa[x].textContent) { console.log("prawidłowo"); nazwa[x].textContent = prod; }
+                        }
+                    }
+                    if (jedno != null) {
+                        for (var x = 0; x < tab.length - 1; x++) {
+                            jednostka[x] = document.getElementById("jednostka");
+                            // console.log(jednostka[x].textContent);
+                            // console.log(Jed);
+                            if (Jed == jednostka[x].textContent) { console.log("prawidłowo"); jednostka[x].textContent = jedno; }
+                        }
+                    }
+                }
+            })
+        }
+
+
+    </script>
     <!--
         ponizej 5 na zółto 
         zmieniac wybrana komórke 
     -->
-    
+
 </body>
+
 </html>
